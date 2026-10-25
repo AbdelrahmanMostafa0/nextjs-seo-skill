@@ -1,0 +1,13 @@
+{
+  "name": "nextjs-seo",
+  "version": "0.1.0",
+  "description": "Technical SEO for Next.js App Router: a low-token static scanner, fixes, live checks, analytics/Search Console detection, JSON-LD, and an env-file guard.",
+  "author": {
+    "name": "Abdelrahman Mostafa",
+    "url": "https://github.com/AbdelrahmanMostafa0"
+  },
+  "homepage": "https://github.com/AbdelrahmanMostafa0/nextjs-seo-skill",
+  "repository": "https://github.com/AbdelrahmanMostafa0/nextjs-seo-skill",
+  "license": "MIT",
+  "keywords": ["nextjs", "seo", "json-ld", "sitemap", "metadata", "search-console", "app-router"]
+}

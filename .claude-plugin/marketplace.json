@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nextjs-seo",
+  "description": "Technical SEO tools for Next.js App Router projects.",
+  "owner": {
+    "name": "Abdelrahman Mostafa",
+    "url": "https://github.com/AbdelrahmanMostafa0"
+  },
+  "plugins": [
+    {
+      "name": "nextjs-seo",
+      "description": "Scan, fix, and verify technical SEO in Next.js App Router projects.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

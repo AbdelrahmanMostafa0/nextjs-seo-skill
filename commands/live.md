@@ -2,6 +2,13 @@
 description: Check what crawlers actually get from a running site (status, head tags, JSON-LD, robots, sitemap, OG image) without dumping full HTML
 argument-hint: "<url>  e.g. http://localhost:3000/blog/post or https://example.com"
 allowed-tools: Bash(curl:*), Bash(npx next-seo-doctor:*)
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 Target: `$ARGUMENTS`

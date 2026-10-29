@@ -2,6 +2,13 @@
 description: Detect Google Search Console verification, GTM, GA4, and other analytics/webmaster tools in this Next.js codebase, and how each is wired
 argument-hint: "[dir]"
 allowed-tools: Bash(node:*), Read
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 ## Integration scan

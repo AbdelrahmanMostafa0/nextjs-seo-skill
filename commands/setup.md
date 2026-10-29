@@ -2,6 +2,13 @@
 description: Set up baseline technical SEO in a Next.js App Router project (site config, metadataBase, metadata helper, sitemap, robots, JSON-LD, OG image)
 argument-hint: "[site type: blog | ecommerce | saas | local | portfolio | docs]"
 allowed-tools: Bash(node:*), Read, Edit, Write
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 ## What already exists

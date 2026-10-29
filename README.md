@@ -68,9 +68,9 @@ Run `/nextjs-seo:rules` for the full list.
 
 ## Env-file guard
 
-The plugin ships a `PreToolUse` hook that blocks any tool call that reads, writes, lists, greps, sources, or loads `.env`, `.env.*`, `.envrc`, or `.dev.vars`. That includes `dotenv`, `--env-file`, `source .env`, and `printenv`. `.env.example` and other templates stay accessible.
+The skill and every command ship a `PreToolUse` hook that blocks any tool call that reads, writes, lists, greps, sources, or loads `.env`, `.env.*`, `.envrc`, or `.dev.vars`. That includes `dotenv`, `--env-file`, `source .env`, and `printenv`. `.env.example` and other templates stay accessible.
 
-The hook is active in every session while the plugin is enabled, not only during SEO commands. That's deliberate: secrets stay out of the model's context whatever you're doing. The commands also never run `next dev`, `next build`, or `next start`, because Next.js loads env files automatically. Start the app yourself and point `/nextjs-seo:live` at it.
+The hook is scoped to the plugin: it is declared in the skill and command frontmatter, not as a global plugin hook, so sessions that never use SEO tooling are unaffected. Once the skill or a command runs, Claude Code keeps the hook active for the rest of that session. The commands also never run `next dev`, `next build`, or `next start`, because Next.js loads env files automatically. Start the app yourself and point `/nextjs-seo:live` at it.
 
 ## Background
 

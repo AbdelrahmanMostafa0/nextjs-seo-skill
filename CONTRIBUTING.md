@@ -9,8 +9,9 @@ scripts/
   rules.mjs           static rules
   integrations.mjs    Search Console / GTM / analytics detection
   env-guard.mjs       PreToolUse hook that blocks env-file access
+                      (registered in the `hooks:` frontmatter of SKILL.md and
+                      every command; add the same block to new commands)
   lib/env.mjs         shared env-file detection
-hooks/hooks.json      registers the env guard
 test/                 fixtures + test runner
 ```
 

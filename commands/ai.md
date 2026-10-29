@@ -2,6 +2,13 @@
 description: Configure AI crawler access (GPTBot, ClaudeBot, PerplexityBot, Google-Extended...) in robots.ts and optionally add llms.txt
 argument-hint: "[allow-all | search-only | block-training | block-all]"
 allowed-tools: Read, Edit, Write, WebFetch
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 Policy requested: `$ARGUMENTS`

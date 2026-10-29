@@ -2,6 +2,13 @@
 description: Add or fix an @id-linked JSON-LD structured-data graph for this site type, XSS-safe
 argument-hint: "[blog | ecommerce | saas | local | realestate | portfolio | docs] [route]"
 allowed-tools: Bash(node:*), Bash(grep:*), Read, Edit, Write
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 ## Existing structured data

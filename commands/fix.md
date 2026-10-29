@@ -2,6 +2,13 @@
 description: Fix the SEO problems found by the static scan, one rule at a time, then re-scan to prove it
 argument-hint: "[rule-id,rule-id | all] (default: all errors and warnings)"
 allowed-tools: Bash(node:*), Read, Edit, Write
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 ## Current scan

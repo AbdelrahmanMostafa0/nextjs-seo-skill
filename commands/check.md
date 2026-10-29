@@ -2,6 +2,13 @@
 description: Scan this Next.js codebase for SEO problems and say how to fix each one (static scan, low token cost)
 argument-hint: "[dir] [--only rule,rule] [--skip rule,rule] [--max N]"
 allowed-tools: Bash(node:*), Read
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 ## Scan output

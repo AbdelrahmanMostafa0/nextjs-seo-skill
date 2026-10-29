@@ -1,6 +1,13 @@
 ---
 name: nextjs-seo
 description: Technical SEO for Next.js App Router sites — audit or implement metadata (generateMetadata, metadataBase, canonicals, Open Graph, Twitter), sitemap.ts, robots.ts, JSON-LD structured data graphs, opengraph-image files, hreflang for i18n, crawlability, Core Web Vitals, and AI-crawler access. Use when the user asks to "add SEO", "fix SEO", "audit SEO", set up a sitemap/robots/canonical/OG image/structured data/schema/JSON-LD/hreflang in a Next.js project, asks why a page isn't indexed or why link previews are wrong, or mentions next-seo-doctor.
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 # Next.js SEO
@@ -13,7 +20,7 @@ The core idea: **SEO breaks silently.** Nothing errors, results just get worse m
 
 Never read, write, edit, copy, grep, list, source, print, diff, or delete env files (`.env`, `.env.local`, `.env.production`, any `.env.*`, `.envrc`, `.dev.vars`), and never ask to. `.env.example` and other templates are fine to read and edit.
 
-This covers indirect access too. Don't run `next dev`, `next build`, or `next start`; they load env files automatically. Don't use `dotenv`, `--env-file`, or `source`. Refer to config by variable name (`process.env.NEXT_PUBLIC_SITE_URL`) and ask the user to set real values in their host. The plugin's env-guard hook blocks these calls anyway; don't try to work around it.
+This covers indirect access too. Don't run `next dev`, `next build`, or `next start`; they load env files automatically. Don't use `dotenv`, `--env-file`, or `source`. Refer to config by variable name (`process.env.NEXT_PUBLIC_SITE_URL`) and ask the user to set real values in their host. This skill's env-guard hook blocks these calls anyway; don't try to work around it.
 
 ## Commands
 

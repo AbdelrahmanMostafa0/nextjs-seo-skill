@@ -2,6 +2,13 @@
 description: Deep SEO review of one route (metadata, canonical, OG, JSON-LD, rendering, 404 handling)
 argument-hint: "<route path or file>  e.g. /blog/[slug] or app/blog/[slug]/page.tsx"
 allowed-tools: Bash(node:*), Bash(ls:*), Read
+hooks:
+  PreToolUse:
+    - matcher: "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      hooks:
+        - type: command
+          command: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/env-guard.mjs"'
+          timeout: 10
 ---
 
 Route: `$ARGUMENTS` (ask for one if empty)
